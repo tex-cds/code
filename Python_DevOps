@@ -1,0 +1,24 @@
+# Problem: There are a large amount of folders with DAT files that need to be compiled in a list and passed to a proprietary parser
+# Solution: Use the below to generate the list of DAT files and display the final count
+
+import glob
+
+targetPattern = r"C:\MAIN\001\Data Sets\*.dat"
+paths = glob.glob(targetPattern) 
+
+print(paths)
+print(len(paths))
+
+
+# Problem: File paths have been sourced from the DB but you need to check their validity
+# Solution: Use the below to print a list of file paths that are incorrect/do not exist
+
+import os.path
+from os import path
+
+list = [a, b, c]
+
+print("\nPaths that do not exist:\n")
+for i in list:
+    if str(path.exists(i)) == "False":
+        print(i)
