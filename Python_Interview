@@ -1,0 +1,14 @@
+# Assignment: Write a query that calculates the difference between the highest salaries found in the marketing and engineering departments. Output just the absolute difference in salaries.
+
+import pandas as pd
+
+salary_diff = 0
+
+df = pd.merge(db_employee, db_dept, how='inner', left_on='department_id', right_on='id')
+
+marketing_max_salary = df[df['department']=='marketing']['salary'].max()
+engineering_max_salary = df[df['department']=='engineering']['salary'].max()
+
+salary_diff = abs(marketing_max_salary - engineering_max_salary)
+
+print(salary_diff)
