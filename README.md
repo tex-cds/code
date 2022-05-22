@@ -26,6 +26,8 @@ FROM google_gmail_emails
 GROUP BY to_user
 )
 
+-- Use ROW_NUMBER to provide unique rank figure, dependent on ORDER BY clause in OVER clause
+
 SELECT *, 
 ROW_NUMBER() OVER(ORDER BY email_count DESC, user ASC) AS ranking
 FROM total_emails
