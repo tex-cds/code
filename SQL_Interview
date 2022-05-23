@@ -15,3 +15,12 @@ GROUP BY to_user
 SELECT *, 
 ROW_NUMBER() OVER(ORDER BY email_count DESC, user ASC) AS ranking
 FROM total_emails
+
+
+
+
+-- Assignment 2: Find the titles of workers that earn the highest salary. Output the highest-paid title or multiple titles that share the highest salary.
+
+SELECT worker_title FROM worker w
+INNER JOIN title t ON t.worker_ref_id = w.worker_id
+WHERE salary = (SELECT max(salary) FROM worker)
