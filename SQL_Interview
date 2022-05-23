@@ -47,3 +47,19 @@ WHERE c.enabled = 0;
 
 UPDATE data_check SET updated_datetime = NOW() WHERE `name` = 903;
 
+
+
+-- Real World Example 2: this is a small part of a larger project where distance was calculated to the nearest station using PostGIS functions for geospatial transformation
+
+SELECT * FROM 
+(SELECT st_distance(
+             st_transform(st_geomfromtext('POINT($longitude $latitude)', 4326), 27700), cds.boundary_table.geom
+                   ) AS metres_to_station,
+distinctname AS station_name,
+'train'::text AS station_classification
+FROM cds.boundary_table
+WHERE function ILIKE '%train station%'
+AND distinctname IS NOT NULL
+ORDER BY metres_to_station ASC
+LIMIT 1) AS trainStation
+
