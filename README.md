@@ -71,7 +71,7 @@ paths = glob.glob(targetPattern)
 print(paths)
 print(len(paths))
 ```
-
+<br>
 Problem: File paths have been sourced from the DB but you need to check their validity
 <br>
 Solution: Use the below to print a list of file paths that are incorrect/do not exist
@@ -86,6 +86,7 @@ for i in list:
     if str(path.exists(i)) == "False":
         print(i)
 ```
+
 
 
 
