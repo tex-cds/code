@@ -27,9 +27,7 @@ WHERE salary = (SELECT max(salary) FROM worker)
 
 
 
--- Real world example 1: Create a data check to be displayed on the UI alongside existing results that shows categories which are not in use
--- Note: software/DB structure alreaady exist; for this task there are 3 relevant tables, 2 of which represent different stages in a hierarchical data set and 1 which maps the other 2 together
-
+-- Real World Example 1: Create a data check to be displayed on the UI alongside existing results that shows categories which are not in use
 
 INSERT INTO data_check (name, description, sql, flag_external, flag_internal, notify, short_name, resolution)
 VALUES (903, 'Returns products that are linked to a category that is no longer in use', 'CALL data_check_903', 0, 1, 0, 'Products with Inactive Category', 'Add at least one category from the current data set against the products');
@@ -48,6 +46,4 @@ INNER JOIN category c ON c.category_id = pc.category_id
 WHERE c.enabled = 0;
 
 UPDATE data_check SET updated_datetime = NOW() WHERE `name` = 903;
-
-SELECT id, product, category FROM dc_results_903;
 
