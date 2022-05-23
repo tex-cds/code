@@ -1,7 +1,7 @@
 ## Code Snippets ✂️
 
 Here on the ReadMe you can find some quick coding challenges I've completed and small samples of SQL/Python that I use often or just find helpful/interesting.<br><br>
-Be sure to check out the files above, packed with SQL and Python goodness inclulding SQL Window Functions.<br>
+Be sure to check out the files above, packed with SQL and Python goodness.<br>
 
 ---
 
