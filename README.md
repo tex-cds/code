@@ -5,7 +5,7 @@ Be sure to check out the files above, packed with SQL and Python goodness.<br>
 
 ---
 
-### Typical Interview Challenges
+### Typical Interview Challenges 🤔
 
 #### SQL
 
@@ -57,7 +57,7 @@ print(salary_diff)
 
 ---
 
-### My Favorite Day-to-Day Python for DevOps
+### My Favorite Day-to-Day Python for DevOps 🐍
 
 Problem: There are a large amount of folders with DAT files that need to be compiled in a list and passed to a proprietary parser
 <br>
@@ -75,6 +75,7 @@ print(len(paths))
 Problem: File paths have been sourced from the DB but you need to check their validity
 <br>
 Solution: Use the below to print a list of file paths that are incorrect/do not exist
+
 ```
 import os.path
 from os import path
@@ -86,7 +87,24 @@ for i in list:
     if str(path.exists(i)) == "False":
         print(i)
 ```
+<br><br>
 
+---
+### Geospatial Data and PostGIS 🌐
 
+Not only does the below transform the geometry of 2 long/lat points, then calculate the distance to to a given boundary line, but Postgres' nifty ILIKE slips in a casual case-insensitive pattern matching...sometimes it's the little things that make it all the better.
 
+```
+SELECT * FROM 
+(SELECT st_distance(
+             st_transform(st_geomfromtext('POINT($longitude $latitude)', 4326), 27700), cds.boundary_table.geom
+                   ) AS metres_to_station,
+distinctname AS station_name,
+'train'::text AS station_classification
+FROM cds.boundary_table
+WHERE function ILIKE '%train station%'
+AND distinctname IS NOT NULL
+ORDER BY metres_to_station ASC
+LIMIT 1) AS trainStation
+```
 
