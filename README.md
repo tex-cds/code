@@ -5,7 +5,7 @@ Be sure to check out the files above, packed with SQL and Python goodness.<br>
 
 ---
 
-### Typical Interview Challenges 🤔
+### Typical Interview Challenges 🤓
 
 #### SQL
 
@@ -92,7 +92,7 @@ for i in list:
 ---
 ### Geospatial Data and PostGIS 🌐
 
-Not only does the below transform the geometry of 2 long/lat points, then calculate the distance to to a given boundary line, but Postgres' nifty ILIKE slips in a casual case-insensitive pattern matching...sometimes it's the little things that make it all the better.
+Taking a third party provided shape file, importing it into a Postgres DB (with the help of ogr2ogr), then transforming it to a new geometry and calculating distances to specific landmarks
 
 ```
 SELECT * FROM 
